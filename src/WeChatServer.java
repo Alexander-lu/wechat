@@ -121,7 +121,7 @@ public class WeChatServer extends ConsoleProgram
                    return SUCCESS_MSG;
                }
            }else {
-               return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
+             return FAILURE_PREFIX + "找不到账户【" + request.getParam("name2") + "】";
            }
        }
 
