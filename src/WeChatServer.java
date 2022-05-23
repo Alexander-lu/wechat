@@ -62,7 +62,7 @@ public class WeChatServer extends ConsoleProgram
             return HAWTools.imageToString(accounts.get(request.getParam("name")).getAvatat());
         }
         if (cmd.equals("setStatus")) {
-            accounts.get(request.getParam("name")).setStatus(request.getParam("Status"));
+            accounts.get(request.getParam("name")).setStatus(request.getParam("status"));
             return accounts.get(request.getParam("name")).getStatus();
         }
 
