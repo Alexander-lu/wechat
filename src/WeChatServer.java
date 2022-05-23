@@ -34,17 +34,7 @@ public class WeChatServer extends ConsoleProgram
                 return SUCCESS_MSG;
             }
         }
-//        if (cmd.equals("getAvatar")) {
-//            return accounts.get(request.getParam("name")).getAvatat().toString();
-//        }
-//        if (cmd.equals("getStatus")) {
-//            return accounts.get(request.getParam("name")).getStatus();
-//        }
-//        if (cmd.equals("getFriends")) {
-//            return accounts.get(request.getParam("name")).getFriends().toString();
-//        }
         if (cmd.equals("deleteAccount")) {
-            if (cmd.equals("addAccount")) {
                 if(accounts.containsKey((request.getParam("name")))){
                     accounts.remove(request.getParam("name"));
                     return SUCCESS_MSG;
@@ -52,9 +42,6 @@ public class WeChatServer extends ConsoleProgram
                     return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
                 }
             }
-
-            return SUCCESS_MSG;
-        }
 
         return FAILURE_PREFIX + "未知命令【" + cmd + "】";
     }
