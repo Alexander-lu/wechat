@@ -20,7 +20,7 @@ public class WeChatServer extends ConsoleProgram
         server.start();
         println("Starting server on port " + PORT);
     }
-   public String requestMade(Request request) {
+    public String requestMade(Request request) {
         String cmd = request.getCommand();
         println(request.toString());
 
@@ -91,24 +91,19 @@ public class WeChatServer extends ConsoleProgram
         return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
       }
             }
-                   if (cmd.equals("getFriends")) {
-           if(accounts.get(request.getParam("name1")).friends.size() > 0 ){
-               return accounts.get(request.getParam("name")).getFriends().toString();
-           }else{  return "[]";}
-       }
       if (cmd.equals("getFriends")) {
-           if(accounts.get(request.getParam("name")).friends.isEmpty() ){
-               return "[]";
+           if(accounts.get(request.getParam("name")).friends.size() > 0 ){
+               String a = "";
+               for (String name : accounts.get(request.getParam("name")).friends.keySet()) {
+                   a+=name+", ";
+               }
+               StringBuilder str = new StringBuilder(a);
+               str.delete(str.length()-1,str.length());
+               String b = String.valueOf(str);
+               String c = b.substring(0,b.length() - 1);
+               return "["+c+"]";
            }else{
-        String a = "";
-        for (String name : accounts.get(request.getParam("name")).friends.keySet()) {
-          a+=name+", ";
-        }
-        StringBuilder str = new StringBuilder(a);
-        str.delete(str.length()-1,str.length());
-        String b = String.valueOf(str);
-        String c = b.substring(0,b.length() - 1);
-        return "["+c+"]";
+               return "[]";
            }
        }
        if (cmd.equals("addFriend")) {
