@@ -20,7 +20,7 @@ public class WeChatServer extends ConsoleProgram
         server.start();
         println("Starting server on port " + PORT);
     }
-    public String requestMade(Request request) {
+   public String requestMade(Request request) {
         String cmd = request.getCommand();
         println(request.toString());
 
@@ -92,23 +92,29 @@ public class WeChatServer extends ConsoleProgram
       }
             }
       if (cmd.equals("getFriends")) {
-           if(accounts.get(request.getParam("name")).friends.size() > 0 ){
+           if(accounts.get(request.getParam("name")).friends.isEmpty() ){
+               return "[]";
+           }else{
                String a = "";
-               for (String name : accounts.get(request.getParam("name")).friends.keySet()) {
-                   a+=name+", ";
+               for (int i = 0; i < accounts.get(request.getParam("name")).friends.size(); i++) {
+                   a += accounts.get(request.getParam("name")).friends.get(i).getName() + ", ";
                }
                StringBuilder str = new StringBuilder(a);
                str.delete(str.length()-1,str.length());
                String b = String.valueOf(str);
                String c = b.substring(0,b.length() - 1);
                return "["+c+"]";
-           }else{
-               return "[]";
            }
        }
        if (cmd.equals("addFriend")) {
            if(accounts.containsKey((request.getParam("name1")))& accounts.containsKey((request.getParam("name2")))){
-               if(accounts.get(request.getParam("name1")).friends.containsKey(request.getParam("name2"))){
+               boolean ifa = false;
+               for(int i = 0; i < accounts.get(request.getParam("name1")).friends.size(); i++) {
+                   if(accounts.get(request.getParam("name1")).friends.get(i).getName().equals(request.getParam("name2"))){
+                       ifa = true;
+                   }
+               }
+               if(ifa){
                    return FAILURE_PREFIX + request.getParam("name1")+"和"+request.getParam("name2")+"已经是朋友了";
                }else {
                    accounts.get(request.getParam("name1")).addFriends(accounts.get(request.getParam("name2")));
