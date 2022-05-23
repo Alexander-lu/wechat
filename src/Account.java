@@ -5,7 +5,7 @@ import java.util.LinkedHashSet;
 public class Account {
     public String name = "";
     public String status = "";
-    public GImage avatat;
+    public GImage avatar;
 
     public void setName(String name) {
         this.name = name;
@@ -15,8 +15,8 @@ public class Account {
         this.status = status;
     }
 
-    public void setAvatat(GImage avatat) {
-        this.avatat = avatat;
+    public void setAvatar(GImage avatat) {
+        this.avatar = avatat;
     }
 
     public LinkedHashSet<Account> friends;
@@ -32,7 +32,7 @@ public class Account {
     }
 
     public GImage getAvatat() {
-        return avatat;
+        return avatar;
     }
 
     public LinkedHashSet<Account> getFriends() {
