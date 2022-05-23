@@ -27,22 +27,22 @@ public class WeChatServer extends ConsoleProgram
         if (cmd.equals("ping")) {return "pong";}
         if (cmd.equals("addAccount")) {
             if(accounts.containsKey((request.getParam("name")))){
-
+                return FAILURE_PREFIX + "账户已经存在";
             } else {
                 Account account = new Account(request.getParam("name"));
                 accounts.put(request.getParam("name"),account);
             }
             return SUCCESS_MSG;
         }
-        if (cmd.equals("getAvatar")) {
-            return accounts.get(request.getParam("name")).getAvatat().toString();
-        }
-        if (cmd.equals("getStatus")) {
-            return accounts.get(request.getParam("name")).getStatus().toString();
-        }
-        if (cmd.equals("getFriends")) {
-            return accounts.get(request.getParam("name")).getFriends().toString();
-        }
+//        if (cmd.equals("getAvatar")) {
+//            return accounts.get(request.getParam("name")).getAvatat().toString();
+//        }
+//        if (cmd.equals("getStatus")) {
+//            return accounts.get(request.getParam("name")).getStatus();
+//        }
+//        if (cmd.equals("getFriends")) {
+//            return accounts.get(request.getParam("name")).getFriends().toString();
+//        }
         if (cmd.equals("deleteAccount")) {
             accounts.remove(request.getParam("name"));
             return SUCCESS_MSG;
