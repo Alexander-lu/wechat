@@ -6,7 +6,7 @@ public class Account {
     public String name;
     public String status;
     public GImage avatar;
-    public HashMap<String,Account> friends = new HashMap<>();
+    public ArrayList<Account> friends = new ArrayList<Account>();
 
     public void setName(String name) {
         this.name = name;
@@ -36,10 +36,10 @@ public class Account {
         return avatar;
     }
 
-    public HashMap<String,Account> getFriends() {
+    public ArrayList<Account> getFriends() {
         return friends;
     }
     public void addFriends(Account name2){
-        friends.put(name2.getName(),name2);
+        friends.add(name2);
     }
 }
