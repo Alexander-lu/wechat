@@ -20,7 +20,6 @@ public class WeChatServer extends ConsoleProgram
         server.start();
         println("Starting server on port " + PORT);
     }
-
    public String requestMade(Request request) {
         String cmd = request.getCommand();
         println(request.toString());
@@ -51,15 +50,31 @@ public class WeChatServer extends ConsoleProgram
             }
         }
          if (cmd.equals("getAvatar")) {
-             return HAWTools.imageToString(accounts.get(request.getParam("name")).getAvatat());
+             if(accounts.containsKey((request.getParam("name")))){
+                 if (accounts.get(request.getParam("name")).getAvatat() == null){
+                     return "";
+                 }else {
+                     return HAWTools.imageToString(accounts.get(request.getParam("name")).getAvatat());
+                 }
+             }else {
+                 return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
+             }
          }
          if (cmd.equals("getStatus")) {
-             return accounts.get(request.getParam("name")).getStatus();
+             if(accounts.containsKey((request.getParam("name")))){
+                 if (accounts.get(request.getParam("name")).getStatus() == null){
+                     return "";
+                 }else {
+                     return accounts.get(request.getParam("name")).getStatus();
+                 }
+             }else {
+                 return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
+             }
          }
-       if (cmd.equals("getFriends")) {
-           return "[]";
+//       if (cmd.equals("getFriends")) {
+//           return "[]";
 //           return accounts.get(request.getParam("name")).getFriends().toString();
-       }
+//       }
 
         if (cmd.equals("setAvatar")) {
             if(accounts.containsKey((request.getParam("name")))){
