@@ -3,8 +3,8 @@ import acm.graphics.GImage;
 import java.util.LinkedHashSet;
 
 public class Account {
-    public String name = "";
-    public String status = "";
+    public String name;
+    public String status;
     public GImage avatar;
 
     public void setName(String name) {
