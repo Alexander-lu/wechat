@@ -8,7 +8,9 @@ public class Account {
     public GImage avatat;
 
     public LinkedHashSet friends;
-
+  public Account(String name) {
+        this.name = name;
+    }
     public String getName() {
         return name;
     }
