@@ -28,11 +28,12 @@ public class WeChatServer extends ConsoleProgram
         if (cmd.equals("addAccount")) {
             Account account = new Account(request.getParam("name"));
             accounts.put(request.getParam("name"),account);
-//            accounts.add(request.getParam("name"),account);
-            return "pong1";}
+            return SUCCESS_MSG;
+        }
         if (cmd.equals("deleteAccount")) {
             accounts.remove(request.getParam("name"));
-            return "pong2";}
+            return SUCCESS_MSG;
+        }
 
         return FAILURE_PREFIX + "未知命令【" + cmd + "】";
     }
