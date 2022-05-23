@@ -7,7 +7,7 @@ public class Account {
     public String status;
     public GImage avatat;
 
-    public LinkedHashSet friends;
+    public LinkedHashSet<Account> friends;
   public Account(String name) {
         this.name = name;
     }
@@ -21,5 +21,9 @@ public class Account {
 
     public GImage getAvatat() {
         return avatat;
+    }
+
+    public LinkedHashSet<Account> getFriends() {
+        return friends;
     }
 }
