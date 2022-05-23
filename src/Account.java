@@ -6,7 +6,7 @@ public class Account {
     public String name;
     public String status;
     public GImage avatar;
-    public HashMap<String,Account> friends;
+    public HashMap<String,Account> friends = new HashMap<>();
 
     public void setName(String name) {
         this.name = name;
