@@ -6,6 +6,7 @@ public class Account {
     public String name;
     public String status;
     public GImage avatar;
+    public LinkedHashSet<Account> friends;
 
     public void setName(String name) {
         this.name = name;
@@ -19,7 +20,7 @@ public class Account {
         this.avatar = avatat;
     }
 
-    public LinkedHashSet<Account> friends;
+
   public Account(String name) {
         this.name = name;
     }
@@ -37,5 +38,8 @@ public class Account {
 
     public LinkedHashSet<Account> getFriends() {
         return friends;
+    }
+    public void addFriends(Account name2){
+        friends.add(name2);
     }
 }
