@@ -61,13 +61,18 @@ public class WeChatServer extends ConsoleProgram
 //           return accounts.get(request.getParam("name")).getFriends().toString();
        }
 
-        if (cmd.equals("setAvatar")) {
+       if (cmd.equals("setAvatar")) {
+            if(accounts.containsKey((request.getParam("name")))){
             accounts.get(request.getParam("name")).setAvatat(HAWTools.stringToImage(request.getParam("imageString")));
-                 return SUCCESS_MSG;
+                 return SUCCESS_MSG;}else {
+                return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
+            }
         }
         if (cmd.equals("setStatus")) {
+            if(accounts.containsKey((request.getParam("name")))){
             accounts.get(request.getParam("name")).setStatus(request.getParam("status"));
-               return SUCCESS_MSG;
+               return SUCCESS_MSG;}else {
+                return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
         }
 
         return FAILURE_PREFIX + "未知命令【" + cmd + "】";
