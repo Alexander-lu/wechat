@@ -96,6 +96,21 @@ public class WeChatServer extends ConsoleProgram
                return accounts.get(request.getParam("name")).getFriends().toString();
            }else{  return "[]";}
        }
+         if (cmd.equals("getFriends")) {
+           if(accounts.get(request.getParam("name")).friends.isEmpty() ){
+               return "[]";
+           }else{
+        String a = "";
+        for (String name : accounts.get(request.getParam("name")).friends.keySet()) {
+          a+=name+", ";
+        }
+        StringBuilder str = new StringBuilder(a);
+        str.delete(str.length()-1,str.length());
+        String b = String.valueOf(str);
+        String c = b.substring(0,b.length() - 1);
+        return "["+c+"]";
+           }
+       }
        if (cmd.equals("addFriend")) {
            if(accounts.containsKey((request.getParam("name1")))& accounts.containsKey((request.getParam("name2")))){
                accounts.get(request.getParam("name1")).addFriends(accounts.get(request.getParam("name2")));
