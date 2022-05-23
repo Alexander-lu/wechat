@@ -7,6 +7,18 @@ public class Account {
     public String status;
     public GImage avatat;
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setAvatat(GImage avatat) {
+        this.avatat = avatat;
+    }
+
     public LinkedHashSet<Account> friends;
   public Account(String name) {
         this.name = name;
