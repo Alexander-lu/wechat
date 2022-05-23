@@ -20,7 +20,7 @@ public class WeChatServer extends ConsoleProgram
         println("Starting server on port " + PORT);
     }
 
-    public String requestMade(Request request) {
+   public String requestMade(Request request) {
         String cmd = request.getCommand();
         println(request.toString());
 
@@ -31,8 +31,8 @@ public class WeChatServer extends ConsoleProgram
             } else {
                 Account account = new Account(request.getParam("name"));
                 accounts.put(request.getParam("name"),account);
+                return SUCCESS_MSG;
             }
-            return SUCCESS_MSG;
         }
 //        if (cmd.equals("getAvatar")) {
 //            return accounts.get(request.getParam("name")).getAvatat().toString();
@@ -44,7 +44,15 @@ public class WeChatServer extends ConsoleProgram
 //            return accounts.get(request.getParam("name")).getFriends().toString();
 //        }
         if (cmd.equals("deleteAccount")) {
-            accounts.remove(request.getParam("name"));
+            if (cmd.equals("addAccount")) {
+                if(accounts.containsKey((request.getParam("name")))){
+                    accounts.remove(request.getParam("name"));
+                    return SUCCESS_MSG;
+                } else {
+                    return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
+                }
+            }
+
             return SUCCESS_MSG;
         }
 
