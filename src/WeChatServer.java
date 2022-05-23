@@ -42,6 +42,13 @@ public class WeChatServer extends ConsoleProgram
                     return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
                 }
             }
+         if (cmd.equals("haveAccount")) {
+            if(accounts.containsKey((request.getParam("name")))){
+                return "true";
+            } else {
+                return "false";
+            }
+        }
 
         return FAILURE_PREFIX + "未知命令【" + cmd + "】";
     }
