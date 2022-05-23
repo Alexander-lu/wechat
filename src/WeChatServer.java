@@ -29,7 +29,7 @@ public class WeChatServer extends ConsoleProgram
         String cmd = request.getCommand();
         println(request.toString());
 
-        // TODO:
+        if (cmd.equals("ping")) {return "pong";}
 
         return FAILURE_PREFIX + "未知命令【" + cmd + "】";
     }
