@@ -108,6 +108,9 @@ public class WeChatServer extends ConsoleProgram
        }
        if (cmd.equals("addFriend")) {
            if(accounts.containsKey((request.getParam("name1")))& accounts.containsKey((request.getParam("name2")))){
+               if(request.getParam("name1").equals(request.getParam("name2"))){
+                   return FAILURE_PREFIX + "无法将自己添加为好友";
+               }
                boolean ifa = false;
                for(int i = 0; i < accounts.get(request.getParam("name1")).friends.size(); i++) {
                    if(accounts.get(request.getParam("name1")).friends.get(i).getName().equals(request.getParam("name2"))){
@@ -121,7 +124,7 @@ public class WeChatServer extends ConsoleProgram
                    return SUCCESS_MSG;
                }
            }else {
-             return FAILURE_PREFIX + "找不到账户【" + request.getParam("name2") + "】";
+               return FAILURE_PREFIX + "找不到账户【" + request.getParam("name2") + "】";
            }
        }
 
