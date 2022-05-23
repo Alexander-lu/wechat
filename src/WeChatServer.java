@@ -2,7 +2,7 @@ import acm.program.ConsoleProgram;
 import adalab.core.net.Request;
 import adalab.core.net.SimpleServer;
 import adalab.core.net.SimpleServerListener;
-
+import java.util.HashMap;
 public class WeChatServer extends ConsoleProgram
         implements SimpleServerListener {
 
