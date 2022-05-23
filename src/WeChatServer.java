@@ -105,7 +105,7 @@ public class WeChatServer extends ConsoleProgram
                String c = b.substring(0,b.length() - 1);
                return "["+c+"]";
            }
-       }
+      }
        if (cmd.equals("addFriend")) {
            if(accounts.containsKey((request.getParam("name1")))& accounts.containsKey((request.getParam("name2")))){
                if(request.getParam("name1").equals(request.getParam("name2"))){
