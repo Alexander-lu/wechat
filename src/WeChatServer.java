@@ -96,7 +96,7 @@ public class WeChatServer extends ConsoleProgram
                return accounts.get(request.getParam("name")).getFriends().toString();
            }else{  return "[]";}
        }
-         if (cmd.equals("getFriends")) {
+      if (cmd.equals("getFriends")) {
            if(accounts.get(request.getParam("name")).friends.isEmpty() ){
                return "[]";
            }else{
@@ -114,7 +114,8 @@ public class WeChatServer extends ConsoleProgram
        if (cmd.equals("addFriend")) {
            if(accounts.containsKey((request.getParam("name1")))& accounts.containsKey((request.getParam("name2")))){
                accounts.get(request.getParam("name1")).addFriends(accounts.get(request.getParam("name2")));
-               return SUCCESS_MSG;}else {
+               return SUCCESS_MSG;
+           }else {
                return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
            }
        }
