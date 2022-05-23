@@ -50,12 +50,16 @@ public class WeChatServer extends ConsoleProgram
                 return "false";
             }
         }
-        // if (cmd.equals("getAvatar")) {
-        //     return HAWTools.imageToString(accounts.get(request.getParam("name")).getAvatat());
-        // }
-        // if (cmd.equals("getStatus")) {
-        //     return accounts.get(request.getParam("name")).getStatus();
-        // }
+        if (cmd.equals("getAvatar")) {
+             return HAWTools.imageToString(accounts.get(request.getParam("name")).getAvatat());
+         }
+         if (cmd.equals("getStatus")) {
+             return accounts.get(request.getParam("name")).getStatus();
+         }
+       if (cmd.equals("getFriends")) {
+           return "[]";
+//           return accounts.get(request.getParam("name")).getFriends().toString();
+       }
 
         if (cmd.equals("setAvatar")) {
             accounts.get(request.getParam("name")).setAvatat(HAWTools.stringToImage(request.getParam("imageString")));
