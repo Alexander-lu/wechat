@@ -1,6 +1,5 @@
 import acm.graphics.GImage;
-
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
 
 public class Account {
     public String name;
