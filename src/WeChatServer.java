@@ -121,6 +121,7 @@ public class WeChatServer extends ConsoleProgram
                    return FAILURE_PREFIX + request.getParam("name1")+"和"+request.getParam("name2")+"已经是朋友了";
                }else {
                    accounts.get(request.getParam("name1")).addFriends(request.getParam("name2"));
+                   accounts.get(request.getParam("name2")).addFriends(request.getParam("name1"));
                    return SUCCESS_MSG;
                }
            }else {
