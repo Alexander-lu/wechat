@@ -41,4 +41,11 @@ public class Account {
     public void addFriends(Account name2){
         friends.add(name2);
     }
+    public void deleteFriend(String name2){
+        for (int i = 0; i < friends.size(); i++) {
+         if(friends.get(i).getName().equals(name2))  {
+             friends.remove(i);
+         }
+        }
+    }
 }
