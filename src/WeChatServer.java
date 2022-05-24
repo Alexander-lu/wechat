@@ -40,7 +40,6 @@ public class WeChatServer extends ConsoleProgram
                 if(accounts.containsKey((request.getParam("name")))){
         for (Map.Entry<String, Account> stringAccountEntry : accounts.entrySet()) {
           stringAccountEntry.getValue().deleteFriend(request.getParam("name"));
-          break;
         }
                     accounts.remove(request.getParam("name"));
                     return SUCCESS_MSG;
