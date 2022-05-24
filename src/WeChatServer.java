@@ -26,8 +26,8 @@ public class WeChatServer extends ConsoleProgram
         String cmd = request.getCommand();
         println(request.toString());
 
-        if (cmd.equals("ping")) {return "pong";}
-        if (cmd.equals("addAccount")) {
+       if (cmd.equals("ping")) {return "pong";}
+       if (cmd.equals("addAccount")) {
             if(accounts.containsKey((request.getParam("name")))){
                 return FAILURE_PREFIX + "账户已经存在";
             } else {
@@ -36,7 +36,7 @@ public class WeChatServer extends ConsoleProgram
                 return SUCCESS_MSG;
             }
         }
-        if (cmd.equals("deleteAccount")) {
+       if (cmd.equals("deleteAccount")) {
                 if(accounts.containsKey((request.getParam("name")))){
         for (Map.Entry<String, Account> stringAccountEntry : accounts.entrySet()) {
           stringAccountEntry.getValue().deleteFriend(request.getParam("name"));
@@ -47,14 +47,14 @@ public class WeChatServer extends ConsoleProgram
                     return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
                 }
             }
-         if (cmd.equals("haveAccount")) {
+       if (cmd.equals("haveAccount")) {
             if(accounts.containsKey((request.getParam("name")))){
                 return "true";
             } else {
                 return "false";
             }
         }
-         if (cmd.equals("getAvatar")) {
+       if (cmd.equals("getAvatar")) {
              if(accounts.containsKey((request.getParam("name")))){
                  if (accounts.get(request.getParam("name")).getAvatat() == null){
                      return "";
@@ -65,7 +65,7 @@ public class WeChatServer extends ConsoleProgram
                  return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
              }
          }
-         if (cmd.equals("getStatus")) {
+       if (cmd.equals("getStatus")) {
              if(accounts.containsKey((request.getParam("name")))){
                  if (accounts.get(request.getParam("name")).getStatus() == null){
                      return "";
@@ -76,19 +76,14 @@ public class WeChatServer extends ConsoleProgram
                  return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
              }
          }
-//       if (cmd.equals("getFriends")) {
-//           return "[]";
-//           return accounts.get(request.getParam("name")).getFriends().toString();
-//       }
-
-        if (cmd.equals("setAvatar")) {
+      if (cmd.equals("setAvatar")) {
             if(accounts.containsKey((request.getParam("name")))){
             accounts.get(request.getParam("name")).setAvatar(HAWTools.stringToImage(request.getParam("imageString")));
                  return SUCCESS_MSG;}else {
                 return FAILURE_PREFIX + "找不到账户【" + request.getParam("name") + "】";
             }
         }
-    if (cmd.equals("setStatus")) {
+      if (cmd.equals("setStatus")) {
       if (accounts.containsKey((request.getParam("name")))) {
         accounts.get(request.getParam("name")).setStatus(request.getParam("status"));
         return SUCCESS_MSG;
@@ -102,7 +97,7 @@ public class WeChatServer extends ConsoleProgram
            }else{
                String a = "";
                for (int i = 0; i < accounts.get(request.getParam("name")).friends.size(); i++) {
-                   a += accounts.get(request.getParam("name")).friends.get(i).getName() + ", ";
+                   a += accounts.get(request.getParam("name")).friends.get(i) + ", ";
                }
                StringBuilder str = new StringBuilder(a);
                str.delete(str.length()-1,str.length());
@@ -111,21 +106,21 @@ public class WeChatServer extends ConsoleProgram
                return "["+c+"]";
            }
       }
-       if (cmd.equals("addFriend")) {
+      if (cmd.equals("addFriend")) {
            if(accounts.containsKey((request.getParam("name1")))& accounts.containsKey((request.getParam("name2")))){
                if(request.getParam("name1").equals(request.getParam("name2"))){
                    return FAILURE_PREFIX + "无法将自己添加为好友";
                }
                boolean ifa = false;
                for(int i = 0; i < accounts.get(request.getParam("name1")).friends.size(); i++) {
-                   if(accounts.get(request.getParam("name1")).friends.get(i).getName().equals(request.getParam("name2"))){
+                   if(accounts.get(request.getParam("name1")).friends.get(i).equals(request.getParam("name2"))){
                        ifa = true;
                    }
                }
                if(ifa){
                    return FAILURE_PREFIX + request.getParam("name1")+"和"+request.getParam("name2")+"已经是朋友了";
                }else {
-                   accounts.get(request.getParam("name1")).addFriends(accounts.get(request.getParam("name2")));
+                   accounts.get(request.getParam("name1")).addFriends(request.getParam("name2"));
                    return SUCCESS_MSG;
                }
            }else {
