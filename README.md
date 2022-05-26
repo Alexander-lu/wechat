@@ -9,3 +9,5 @@ wechat特性
 客户端已经配置好了ip地址，无需选择ip
 
 部署的服务器ip地址为：http://175.178.4.131:3200
+
+客户端主程序是WeChatClient.java
