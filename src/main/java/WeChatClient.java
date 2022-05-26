@@ -1,3 +1,4 @@
+package main.java;
 import acm.graphics.GImage;
 import acm.program.GraphicsProgram;
 import acm.util.HAWTools;
