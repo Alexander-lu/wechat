@@ -1,3 +1,5 @@
+package main.java;
+
 import acm.graphics.GImage;
 import java.util.ArrayList;
 import java.util.HashMap;
