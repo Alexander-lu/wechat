@@ -1,6 +1,6 @@
-#wechat特性
+wechat特性
 
-![](C:\Users\22307\AppData\Roaming\marktext\images\2022-05-26-15-49-04-image.png)
+![](src/main/resources/2022-05-26-15-49-04-image.png)
 
 使用最长朋友链需要在分别在红框所框起来的地方输入查询的姓名。
 
