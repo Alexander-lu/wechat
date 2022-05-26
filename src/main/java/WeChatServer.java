@@ -1,3 +1,4 @@
+package main.java;
 import acm.program.ConsoleProgram;
 import adalab.core.net.Request;
 import adalab.core.net.SimpleClient;
